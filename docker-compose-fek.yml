@@ -1,0 +1,61 @@
+version: '3.1'
+services:
+
+  fess:
+    build:
+      context: ./fess
+      args:
+        FESS_VERSION: "11.3.1"
+    container_name: fess
+    restart: unless-stopped
+    ports:
+      - "8082:8080"
+    depends_on:
+      - elasticsearch
+    environment:
+      ES_HTTP_URL: "http://elasticsearch:9200"
+      ES_TRANSPORT_URL: "elasticsearch:9300"
+      FESS_DICTIONARY_PATH: "/var/lib/elasticsearch/config/"
+
+  elasticsearch:
+    build:
+      context: ./elasticsearch
+      args:
+        ELASTIC_VERSION: "5.5.2"
+        ES_DOWNLOAD_URL: "https://artifacts.elastic.co/downloads/elasticsearch"
+        ES_JAVA_OPTS: "-Xms512m -Xmx2g"
+    container_name: elasticsearch
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    cap_add:
+      - IPC_LOCK
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_data:/var/lib/elasticsearch
+
+  kibana:
+    build:
+      context: ./kibana
+      args:
+        KIBANA_VERSION: "5.5.2"
+    container_name: kibana
+    restart: unless-stopped
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    environment:
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+
+volumes:
+  es_data:
+    driver: local
