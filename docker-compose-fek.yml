@@ -5,11 +5,11 @@ services:
     build:
       context: ./fess
       args:
-        FESS_VERSION: "11.3.1"
+        FESS_VERSION: "11.4.5"
     container_name: fess
     restart: unless-stopped
     ports:
-      - "8082:8080"
+      - "80:8080"
     depends_on:
       - elasticsearch
     environment:
