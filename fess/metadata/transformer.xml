@@ -32,26 +32,26 @@
             <arg>"hudx_ct"</arg>
             <arg>"//META[@name='HUDX_ct']/@content"</arg>
         </postConstruct>
-        <!--<postConstruct name="addFieldRule">-->
-            <!--<arg>"hudx_cd"</arg>-->
-            <!--<arg>//META[@name='HUDX_cd']/@content</arg>-->
-        <!--</postConstruct>-->
-        <!--<postConstruct name="addFieldRule">-->
-            <!--<arg>"hudx_cl"</arg>-->
-            <!--<arg>//META[@name='HUDX_cl']/@content</arg>-->
-        <!--</postConstruct>-->
-        <!--<postConstruct name="addFieldRule">-->
-            <!--<arg>"hudx_cs"</arg>-->
-            <!--<arg>//META[@name='HUDX_cs']/@content</arg>-->
-        <!--</postConstruct>-->
-        <!--<postConstruct name="addFieldRule">-->
-            <!--<arg>"hudx_dsp"</arg>-->
-            <!--<arg>//META[@name='HUDX_dsp']/@content</arg>-->
-        <!--</postConstruct>-->
-        <!--<postConstruct name="addFieldRule">-->
-            <!--<arg>"hudx_keywords"</arg>-->
-            <!--<arg>//META[@name='HUDX_keywords']/@content</arg>-->
-        <!--</postConstruct>-->
+        <postConstruct name="addFieldRule">
+            <arg>"hudx_cd"</arg>
+            <arg>"//META[@name='HUDX_cd']/@content"</arg>
+        </postConstruct>
+        <postConstruct name="addFieldRule">
+            <arg>"hudx_cl"</arg>
+            <arg>"//META[@name='HUDX_cl']/@content"</arg>
+        </postConstruct>
+        <postConstruct name="addFieldRule">
+            <arg>"hudx_cs"</arg>
+            <arg>"//META[@name='HUDX_cs']/@content"</arg>
+        </postConstruct>
+        <postConstruct name="addFieldRule">
+            <arg>"hudx_dsp"</arg>
+            <arg>"//META[@name='HUDX_dsp']/@content"</arg>
+        </postConstruct>
+        <postConstruct name="addFieldRule">
+            <arg>"hudx_keywords"</arg>
+            <arg>"//META[@name='HUDX_keywords']/@content"</arg>
+        </postConstruct>
 	</component>
 
 	<component name="fessFileTransformer" class="org.codelibs.fess.crawler.transformer.FessFileTransformer" instance="singleton">
